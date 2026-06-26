@@ -45,8 +45,11 @@ int main()
     cout << "Enter level:   " << endl;
     cin >> l_phys_val;
 
-    float v_curr_val = 10581.4;
-    float v_phys_val = 1297.1;
+    cout << "Enter volume before:  " << endl;
+    cin >> v_curr_val;
+
+    cout << "Enter volume after:  " << endl;
+    cin >> v_phys_val;
 
     TankGauge TG;
 
