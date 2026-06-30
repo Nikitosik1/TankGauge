@@ -6,10 +6,16 @@ class TankGauge
 {
 public:
 
-    double calc_s_area(double v_Val, double h_Val);
-    double calc_s_mid(double v_Val, double v_Val_2,double h_Val, double h_Val_2);
-    double calc_press_air(double p_Val, double p_Val_2, double h_Val, double h_Val_2);
-    double calc_mass_val(double s_Val, double s_Val_2, double p_Val, double p_Val_2);
+    double calc_t_v(double t_val_1, double t_val_2, double t_val_3);
+    double calc_beta(double val_k_0, double p_val);
+    double calc_k_val(double t_Val, int choice);
+    double calc_CTL_val(double beta_val, double t_val, int choice);
+    double calc_d_oil(double d_val, double k_val, double ctl_val);
+    double calc_s_avg(double v_val, double alpha_val, double t_val, double h_val);
+    double calc_m_brutto(float g_val, double d_val, double s_val);
+    double calc_w_salt(double fi_salt_val, double d_val, double ctl_val);
+    double calc_m_ballast(double brutto_val, double w_water_val, double w_mech_val, double w_chlor_val);
+    double calc_m_netto(double brutto_val, double ballast_val);
 };
 
 #endif // TANKGAUGE_H
