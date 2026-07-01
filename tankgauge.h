@@ -16,6 +16,12 @@ public:
     double calc_w_salt(double fi_salt_val, double d_val, double ctl_val);
     double calc_m_ballast(double brutto_val, double w_water_val, double w_mech_val, double w_chlor_val);
     double calc_m_netto(double brutto_val, double ballast_val);
+    double calc_k_koef(double v_tabl_val, double h_val, double v_val);
+    double calc_error_abs(double p_err_val, double k_err_val, double k_geom_form, double h_err_val, double n_err_val);
+    double calc_err_water(double R_val, double r_val);
+    double calc_err_mech(double R_val, double r_val);
+    double calc_err_cl(double R_val, double r_val, double d_val);
+    double calc_netto_error(double brutto_err_val, double err_water_val, double err_mech_val, double err_cl_val, double water_val, double mech_val, double cl_val);
 };
 
 #endif // TANKGAUGE_H

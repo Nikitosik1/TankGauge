@@ -4,9 +4,6 @@
 #include <cmath>
 #include <map>
 
-// press = 17.776
-// lvl = 4.0117035
-
 
 using namespace std;
 
@@ -48,66 +45,67 @@ int main()
     float d_min = 0;
     float d_max = 1500;
 
-    const double k_0 = 613.9723;
-    const double alpha = 12.5 *  pow(10,-6);
+    const double k_0 = 613.9723; //из таблицы госта
+    const double alpha = 12.5 *  pow(10,-6); //из госта
     const float g_val = 9.815;
+    const double n_about_val = 0.05; //из госта
+    const double v_tabl_val = 9425; //из градуировочной таблицы для 1м.
+    const double R_water = 0.11; //
+    const double r_water = 0.08;
+    const double R_mech = 0.02;
+    const double r_mech = 0.01;
+    const double R_cl = 4.2;
+    const double r_cl = 1.5;
 
     double t_curr_val1, t_curr_val2, t_curr_val3, d_curr_val, fi_chlor_salt, w_water_cont, p_curr_val,
             v_val, h_curr_val, w_mech_impur;
 
     cout << "Enter temp 1(mA):    " << endl;
     cin >> t_curr_val1;
-    double temp_calc_val1 = func_calc_temp(t_curr_val1);
-
+//    double temp_calc_val1 = func_calc_temp(t_curr_val1);
+    double temp_calc_val1 = t_curr_val1;
     cout << "Enter temp 2(mA):    " << endl;
     cin >> t_curr_val2;
-    double temp_calc_val2 = func_calc_temp(t_curr_val2);
-
+//    double temp_calc_val2 = func_calc_temp(t_curr_val2);
+    double temp_calc_val2 = t_curr_val2;
     cout << "Enter temp 3(mA):    " << endl;
     cin >> t_curr_val3;
-    double temp_calc_val3 = func_calc_temp(t_curr_val3);
-
+//    double temp_calc_val3 = func_calc_temp(t_curr_val3);
+    double temp_calc_val3 = t_curr_val3;
     cout << "Enter pressure(mA):" << endl;
     cin >> p_curr_val;
     CurrentLoop calc_press(P_min, P_max, p_curr_val);
-    double press_calc_val = calc_press.calc_x();
-
+//    double press_calc_val = calc_press.calc_x();
+    double press_calc_val = p_curr_val;
     cout << "Enter level(mA):   " << endl;
     cin >> h_curr_val;
     CurrentLoop calc_lvl(Y_min, Y_max, h_curr_val);
-    double level_calc_val = calc_lvl.calc_x();
-
+//    double level_calc_val = calc_lvl.calc_x();
+    double level_calc_val = h_curr_val;
     cout << "Enter density(mA):   " << endl;
     cin >> d_curr_val;
     CurrentLoop calc_denst(d_min, d_max, d_curr_val);
-    double denst_calc_val = calc_denst.calc_x();
+//    double denst_calc_val = calc_denst.calc_x();
+    double denst_calc_val = d_curr_val;
+//    std::map<double, int> volume;
+//    volume[0.1] = 324; volume[0.2] = 892;
+//    volume[0.3] = 1678; volume[0.4] = 2634;
+//    volume[0.5] = 3712; volume[0.6] = 4889;
+//    volume[0.7] = 6123; volume[0.8] = 7412;
+//    volume[0.9] = 7856; volume[1] = 9425;
+//    volume[1.1] = 11032; volume[1.2] = 12650;
+//    volume[1.3] = 14256; volume[1.4] = 15823;
+//    volume[1.5] = 17234; volume[1.6] = 17896;
+//    volume[1.7] = 18234; volume[1.8] = 19876;
+//    volume[1.9] = 21345; volume[2] = 22678;
+//    volume[2.1] = 23812; volume[2.2] = 24598;
+//    volume[2.3] = 24892; volume[2.4] = 25000;
 
-    std::map<double, int> volume;
-    volume[0.1] = 324; volume[0.2] = 892;
-    volume[0.3] = 1678; volume[0.4] = 2634;
-    volume[0.5] = 3712; volume[0.6] = 4889;
-    volume[0.7] = 6123; volume[0.8] = 7412;
-    volume[0.9] = 7856; volume[1] = 9425;
-    volume[1.1] = 11032; volume[1.2] = 12650;
-    volume[1.3] = 14256; volume[1.4] = 15823;
-    volume[1.5] = 17234; volume[1.6] = 17896;
-    volume[1.7] = 18234; volume[1.8] = 19876;
-    volume[1.9] = 21345; volume[2] = 22678;
-    volume[2.1] = 23812; volume[2.2] = 24598;
-    volume[2.3] = 24892; volume[2.4] = 25000;
-//    {
-//        {0.1,324},{0.2,892},{0.3,1678},{0.4,2634},
-//        {0.5,3712},{0.6,4889},{0.7,6123},{0.8,7412},
-//        {0,9,7856},{1,9425},{1.1,11032},{1.2,12650},
-//        {1.3,14256},{1.4,15823},{1.5,17234},{1.6 , 17896},
-//        {1.7,18234},{1.8,19876},{1.9,21345},{2 , 22678},
-//        {2.1,23812},{2.2,24598},{2.3,24892},{2.4 , 25000}
-//    };
+//    double round_lvl_val = round(level_calc_val * 10)/10;
+//    v_val = volume[round_lvl_val];
 
-    double round_lvl_val = round(level_calc_val * 10)/10;
-    v_val = volume[round_lvl_val];
-
-    cout<< round_lvl_val << endl;
+    v_val = -2209.8730 * level_calc_val * level_calc_val * level_calc_val
+            + 7974.5161 * level_calc_val * level_calc_val + 4234.7677 * level_calc_val - 193.1146;
 
     cout << "Enter chloride salts:   " << endl;
     cin >> fi_chlor_salt;
@@ -138,10 +136,23 @@ int main()
     double m_ballast_val = TG.calc_m_ballast(m_brutto_val, w_water_cont, w_mech_impur, w_salt_val);
     double m_netto_val = TG.calc_m_netto(m_brutto_val, m_ballast_val);
 
+    double k_koef_val = TG.calc_k_koef(v_tabl_val, level_calc_val, v_val);
+
+    double k_tab_val = level_calc_val/3; //3м диаметр
+    float x_n = 15000;
+    double error_abs = TG.calc_error_abs(0.075*(x_n/press_calc_val),k_tab_val,k_koef_val,0.003/level_calc_val,n_about_val);
+
+    double err_w_water = TG.calc_err_water(R_water,r_water);
+    double err_w_mech = TG.calc_err_mech(R_mech,r_mech);
+    double err_w_cl = TG.calc_err_cl(R_cl,r_cl,d_oil);
+
+    double err_m_netto = TG.calc_netto_error(error_abs,err_w_water,err_w_mech,err_w_cl,w_water_cont,w_mech_impur,w_salt_val);
+
     cout << "\nTemp :  " << t_val << endl;
     cout << "Pressur :    " << press_calc_val << endl;
     cout << "Level :    " << level_calc_val << endl;
     cout << "Volume:       " << v_val << endl;
     cout << "Density:       " << d_curr_val << endl;
     cout << "Mass:       " << m_netto_val << endl;
+    cout << "relative measurement error: " << err_m_netto << endl;
 }
