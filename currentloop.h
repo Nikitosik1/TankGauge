@@ -5,10 +5,10 @@
 class CurrentLoop
 {
 private:
-    double minVal, maxVal, current;
+    double min_val, max_val, current_val;
 public:
-    CurrentLoop(double minVal, double maxVal, double current);
-
+    CurrentLoop(double min_val, double max_val, double current_val);
+//перевод тока
     double calc_x();
 };
 

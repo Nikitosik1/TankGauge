@@ -1,6 +1,6 @@
 #ifndef TONKGAUGE_H
 #define TONKGAUGE_H
-
+#include <vector>
 
 class TankGauge
 {
@@ -8,7 +8,7 @@ public:
 
     double calc_t_v(double t_val_1, double t_val_2, double t_val_3);
     double calc_beta(double val_k_0, double p_val);
-    double calc_k_val(double t_Val, int choice);
+    double calc_k_val(double t_val, int choice);
     double calc_CTL_val(double beta_val, double t_val, int choice);
     double calc_d_oil(double d_val, double k_val, double ctl_val);
     double calc_s_avg(double v_val, double alpha_val, double t_val, double h_val);
@@ -21,7 +21,9 @@ public:
     double calc_err_water(double R_val, double r_val);
     double calc_err_mech(double R_val, double r_val);
     double calc_err_cl(double R_val, double r_val, double d_val);
-    double calc_netto_error(double brutto_err_val, double err_water_val, double err_mech_val, double err_cl_val, double water_val, double mech_val, double cl_val);
+    double calc_netto_error(double brutto_err_val, double err_water_val, double err_mech_val,
+                            double err_cl_val, double water_val, double mech_val, double cl_val);
+    double calc_interpolate_volume(std::vector<double>&h_val, std::vector<int>&v_val, double find_v_val);
 };
 
 #endif // TANKGAUGE_H
