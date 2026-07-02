@@ -4,6 +4,42 @@
 #include <cmath>
 #include <map>
 
+/*
+ case TypeK: // Термопара типа K
+        if (Value < -5.891) // <-200 C
+        {
+            uint8_t belowIndex = 0, aboveIndex = 1;
+            for (belowIndex; belowIndex< 60; belowIndex++,aboveIndex++)
+                if (Value < K_B0[belowIndex] && Value >= K_B0[aboveIndex])
+                    break;
+            
+            if (belowIndex == 60)
+                Temp = -270;
+            else
+            {
+                Temp = -200 - belowIndex;
+                Temp-= abs((K_B0[belowIndex] - Value)/(K_B0[belowIndex] - K_B0[aboveIndex]));
+                if (Temp < -250)
+                    Temp = -250.0 + (Temp + 250.0)/10.0; // -250 - max 1.0C;
+            }
+        }
+        else if (Value <= 0)                                 // <= 0 C
+            Temp = PolynomCorrection (K_B1, 9, Value);
+        else if (Value <= 20.644)				        // <= 500 C
+            Temp = PolynomCorrection (K_B2, 10, Value);
+        else                                            // <= 1372 C
+            Temp = PolynomCorrection (K_B3, 7, Value);
+        break;
+
+float K_B0[61] = {-5.891, -5.907, -5.922, -5.936, -5.951, -5.965, -5.980, -5.994, -6.007, -6.021, \
+                  -6.035, -6.048, -6.061, -6.074, -6.087, -6.099, -6.111, -6.123, -6.135, -6.147, \
+                  -6.158, -6.170, -6.181, -6.192, -6.202, -6.213, -6.223, -6.233, -6.243, -6.252, \
+                  -6.262, -6.271, -6.280, -6.289, -6.297, -6.306, -6.314, -6.322, -6.329, -6.337, \
+                  -6.344, -6.351, -6.358, -6.364, -6.370, -6.377, -6.382, -6.388, -6.393, -6.399, \
+                  -6.404, -6.408, -6.413, -6.417, -6.421, -6.425, -6.429, -6.432, -6.435, -6.438, -6.441}; //<= -200 C
+
+        
+    */
 
 using namespace std;
 
