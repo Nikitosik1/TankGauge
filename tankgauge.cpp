@@ -129,3 +129,37 @@ double TankGauge::calc_interpolate_volume(std::vector<double>& h_val, std::vecto
 
     return y1 + (y2 - y1) * (find_v_val - x1) / (x2 - x1);
 }
+
+
+TGOutput TG::calculateAll(const TGInput& input) {
+    TGOutput result;
+    
+    result.v_val_interp = calc_interpolate_volume(input.height, input.volume, input.level_calc_val);
+    result.t_val = calc_t_v(input.t_curr_val1, input.t_curr_val2, input.t_curr_val3);
+    result.beta_val = calc_beta(input.k_0, input.denst_calc_val);
+    result.choice_15_20 = func_chs();
+    result.k_val = calc_k_val(result.t_val, result.choice_15_20);
+    result.ctl_val = calc_CTL_val(result.beta_val, result.t_val, result.choice_15_20);
+    result.d_oil_val = calc_d_oil(input.denst_calc_val, result.k_val, result.ctl_val);
+    result.s_avg_val = calc_s_avg(input.v_val, input.alpha, result.t_val, input.level_calc_val);
+    result.m_brutto_val = calc_m_brutto(input.g_val, input.denst_calc_val, result.s_avg_val);
+    result.w_salt_val = calc_w_salt(input.fi_chlor_salt, input.denst_calc_val, result.ctl_val);
+    result.m_ballast_val = calc_m_ballast(result.m_brutto_val, input.w_water_cont, 
+                                         input.w_mech_impur, result.w_salt_val);
+    result.m_netto_val = calc_m_netto(result.m_brutto_val, result.m_ballast_val);
+    result.k_koef_val = calc_k_koef(input.v_tabl_val, input.level_calc_val, input.v_val);
+    result.k_tab_val = input.level_calc_val / 3.0;
+    result.error_abs = calc_error_abs(0.075 * (input.p_max / input.press_calc_val), 
+                                      result.k_tab_val,
+                                      result.k_koef_val, 
+                                      0.003 / input.level_calc_val, 
+                                      input.n_about_val);
+    result.err_w_water = calc_err_water(input.R_water, input.r_water);
+    result.err_w_mech = calc_err_mech(input.R_mech, input.r_mech);
+    result.err_w_cl = calc_err_cl(input.R_cl, input.r_cl, result.d_oil_val);
+    result.err_m_netto = calc_netto_error(result.error_abs, result.err_w_water, result.err_w_mech,
+                                         result.err_w_cl, input.w_water_cont, 
+                                         input.w_mech_impur, result.w_salt_val);
+    
+    return result;
+}
