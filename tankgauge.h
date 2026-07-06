@@ -2,6 +2,57 @@
 #define TONKGAUGE_H
 #include <vector>
 
+//Структура для входных данных
+struct TGInput {
+    std::vector<double> height;
+    std::vector<int> volume;
+    double t_curr_val1;
+    double t_curr_val2;
+    double t_curr_val3;
+    double k_0;
+    double denst_calc_val;
+    double v_val;
+    double alpha;
+    double level_calc_val;
+    double g_val;
+    double fi_chlor_salt;
+    double w_water_cont;
+    double w_mech_impur;
+    double v_tabl_val;
+    double p_max;
+    double press_calc_val;
+    int n_about_val;
+    double R_water;
+    double r_water;
+    double R_mech;
+    double r_mech;
+    double R_cl;
+    double r_cl;
+};
+
+// Структура для результатов
+struct TGOutput {
+    double v_val_interp;
+    double t_val;
+    double beta_val;
+    int choice_15_20;
+    double k_val;
+    double ctl_val;
+    double d_oil_val;
+    double s_avg_val;
+    double m_brutto_val;
+    double w_salt_val;
+    double m_ballast_val;
+    double m_netto_val;
+    double k_koef_val;
+    double k_tab_val;
+    double error_abs;
+    double err_w_water;
+    double err_w_mech;
+    double err_w_cl;
+    double err_m_netto;
+}
+
 class TankGauge
 {
 public:
