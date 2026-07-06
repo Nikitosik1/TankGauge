@@ -36,7 +36,6 @@ double func_calc_temp(double t_val){
 
 int main()
 {
-    TankGauge TG;
 
     const double p_min = 0;
     const double p_max = 15000;
@@ -89,6 +88,8 @@ int main()
     CurrentLoop calc_denst(d_min, d_max, d_curr_val);
 //    double denst_calc_val = calc_denst.calc_x();
     double denst_calc_val = d_curr_val;
+
+    TankGauge TG;
 //градуировочная таблица
     vector<double>hight = {0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0,
                                  1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0,
@@ -98,8 +99,6 @@ int main()
                               11032, 12650, 14256, 15823, 17234, 17896, 18234, 19876,
                               21345, 22678, 23812, 24598, 24892, 25000};
 
-    v_val = TG.calc_interpolate_volume(hight,volume,level_calc_val);
-    //расчет для градуировочноый таблицы
 
     cout << "Enter chloride salts:   " << endl;
     cin >> fi_chlor_salt;//массовая доля хлористых солей в нефти
@@ -110,44 +109,41 @@ int main()
     cout << "Enter water content:   " << endl;
     cin >> w_water_cont;//массовая доля воды
 
-    double t_val = TG.calc_t_v(t_curr_val1, t_curr_val2, t_curr_val3);
-
-    double beta_val = TG.calc_beta(k_0, denst_calc_val);
-
     int choice_15_20 = func_chs();
 
-    double k_val = TG.calc_k_val(t_val, choice_15_20);
-    double ctl_val = TG.calc_CTL_val(beta_val, t_val, choice_15_20);
+    TGInput input = {
+        hight,
+        volume,
+        t_curr_val1,
+        t_curr_val2,
+        t_curr_val3,
+        choice_15_20,
+        k_0,
+        denst_calc_val,
+        alpha,
+        level_calc_val,
+        g_val,
+        fi_chlor_salt,
+        w_water_cont,
+        w_mech_impur,
+        v_tabl_val,
+        p_max,
+        press_calc_val,
+        n_about_val,
+        R_water,
+        r_water,
+        R_mech,
+        r_mech,
+        R_cl,
+        r_cl
+    };
 
-    double d_oil_val = TG.calc_d_oil(denst_calc_val, k_val, ctl_val);
-
-    double s_avg_val = TG.calc_s_avg(v_val, alpha, t_val, level_calc_val);
-
-    double m_brutto_val = TG.calc_m_brutto(g_val, denst_calc_val, s_avg_val);
-
-    double w_salt_val = TG.calc_w_salt(fi_chlor_salt, denst_calc_val, ctl_val);
-
-    double m_ballast_val = TG.calc_m_ballast(m_brutto_val, w_water_cont, w_mech_impur, w_salt_val);
-    double m_netto_val = TG.calc_m_netto(m_brutto_val, m_ballast_val);
-
-    double k_koef_val = TG.calc_k_koef(v_tabl_val, level_calc_val, v_val);
-
-    double k_tab_val = level_calc_val/3; //3м диаметр бака
-    double error_abs = TG.calc_error_abs(0.075*(p_max/press_calc_val), k_tab_val,
-                                         k_koef_val, 0.003/level_calc_val, n_about_val);
-
-    double err_w_water = TG.calc_err_water(R_water,r_water);
-    double err_w_mech = TG.calc_err_mech(R_mech,r_mech);
-    double err_w_cl = TG.calc_err_cl(R_cl,r_cl,d_oil_val);
-
-    double err_m_netto = TG.calc_netto_error(error_abs,err_w_water,err_w_mech,
-                                             err_w_cl,w_water_cont,w_mech_impur,w_salt_val);
-
-    cout << "\nTemp :  " << t_val << endl;
-    cout << "Pressur :    " << press_calc_val << endl;
-    cout << "Level :    " << level_calc_val << endl;
-    cout << "Volume:       " << v_val << endl;
-    cout << "Density:       " << d_curr_val << endl;
-    cout << "Mass:       " << m_netto_val << endl;
-    cout << "Relative measurement error: " << err_m_netto << endl;
+    TGOutput result = TG.calculate_all(input);
+    cout << "\nTemp :  " << result.t_val << endl;
+    cout << "Pressur :    " << input.press_calc_val << endl;
+    cout << "Level :    " << input.level_calc_val << endl;
+    cout << "Volume:       " << result.v_val_interp << endl;
+    cout << "Density:       " << input.denst_calc_val << endl;
+    cout << "Mass:       " << result.m_netto_val << endl;
+    cout << "Relative measurement error: " << result.err_m_netto << endl;
 }
