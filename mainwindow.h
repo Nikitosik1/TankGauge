@@ -1,7 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 #include "tankgauge.h"
-
+#include "calibrationdialog.h"
+#include <vector>
 #include <QMainWindow>
 
 namespace Ui {
@@ -17,6 +18,8 @@ public:
     ~MainWindow();
 
 private slots:
+
+    void on_caliborationButton_clicked();
 
     void on_Calculate_clicked();
 
@@ -41,10 +44,12 @@ private slots:
     void on_spinBox_valueChanged(int arg1);
 
 private:
-private:
     Ui::MainWindow *ui;
 
     TankGauge TG;
+
+    std::vector<double> hight;
+    std::vector<double> volume;
 
     double t_val_1;
     double t_val_2;
@@ -58,6 +63,9 @@ private:
     int choice_val;
 
     void updateResults(const TGOutput& result);
+
+    QPushButton *pushButton();
+
 };
 
 #endif // MAINWINDOW_H

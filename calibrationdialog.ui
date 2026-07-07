@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>CalibrationDialog</class>
+ <widget class="QDialog" name="CalibrationDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>605</width>
+    <height>539</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Градуировочная таблица резервуара</string>
+  </property>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>40</y>
+     <width>221</width>
+     <height>371</height>
+    </rect>
+   </property>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <row>
+    <property name="text">
+     <string/>
+    </property>
+   </row>
+   <column>
+    <property name="text">
+     <string>Объем</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>Высота</string>
+    </property>
+   </column>
+   <item row="0" column="0">
+    <property name="text">
+     <string>0.1</string>
+    </property>
+   </item>
+   <item row="0" column="1">
+    <property name="text">
+     <string>324</string>
+    </property>
+   </item>
+   <item row="1" column="0">
+    <property name="text">
+     <string>0.2</string>
+    </property>
+   </item>
+   <item row="1" column="1">
+    <property name="text">
+     <string>892</string>
+    </property>
+   </item>
+   <item row="2" column="0">
+    <property name="text">
+     <string>0.3</string>
+    </property>
+   </item>
+   <item row="2" column="1">
+    <property name="text">
+     <string>1678</string>
+    </property>
+   </item>
+   <item row="3" column="0">
+    <property name="text">
+     <string>0.4</string>
+    </property>
+   </item>
+   <item row="3" column="1">
+    <property name="text">
+     <string>2634</string>
+    </property>
+   </item>
+   <item row="4" column="0">
+    <property name="text">
+     <string>0.5</string>
+    </property>
+   </item>
+   <item row="4" column="1">
+    <property name="text">
+     <string>3712</string>
+    </property>
+   </item>
+   <item row="5" column="0">
+    <property name="text">
+     <string>0.6</string>
+    </property>
+   </item>
+   <item row="5" column="1">
+    <property name="text">
+     <string>4889</string>
+    </property>
+   </item>
+   <item row="6" column="0">
+    <property name="text">
+     <string>0.7</string>
+    </property>
+   </item>
+   <item row="6" column="1">
+    <property name="text">
+     <string>6123</string>
+    </property>
+   </item>
+   <item row="7" column="0">
+    <property name="text">
+     <string>0.8</string>
+    </property>
+   </item>
+   <item row="7" column="1">
+    <property name="text">
+     <string>7412</string>
+    </property>
+   </item>
+   <item row="8" column="0">
+    <property name="text">
+     <string>0.9</string>
+    </property>
+   </item>
+   <item row="8" column="1">
+    <property name="text">
+     <string>7856</string>
+    </property>
+   </item>
+   <item row="9" column="0">
+    <property name="text">
+     <string>1.0</string>
+    </property>
+   </item>
+   <item row="9" column="1">
+    <property name="text">
+     <string>9425</string>
+    </property>
+   </item>
+   <item row="10" column="0">
+    <property name="text">
+     <string>1.1</string>
+    </property>
+   </item>
+   <item row="10" column="1">
+    <property name="text">
+     <string>11032</string>
+    </property>
+   </item>
+   <item row="11" column="0">
+    <property name="text">
+     <string>1.2</string>
+    </property>
+   </item>
+   <item row="11" column="1">
+    <property name="text">
+     <string>12650</string>
+    </property>
+   </item>
+   <item row="12" column="0">
+    <property name="text">
+     <string>1.3</string>
+    </property>
+   </item>
+   <item row="12" column="1">
+    <property name="text">
+     <string>14256</string>
+    </property>
+   </item>
+   <item row="13" column="0">
+    <property name="text">
+     <string>1.4</string>
+    </property>
+   </item>
+   <item row="13" column="1">
+    <property name="text">
+     <string>15823</string>
+    </property>
+   </item>
+   <item row="14" column="0">
+    <property name="text">
+     <string>1.5</string>
+    </property>
+   </item>
+   <item row="14" column="1">
+    <property name="text">
+     <string>17234</string>
+    </property>
+   </item>
+   <item row="15" column="0">
+    <property name="text">
+     <string>1.6</string>
+    </property>
+   </item>
+   <item row="15" column="1">
+    <property name="text">
+     <string>17896</string>
+    </property>
+   </item>
+   <item row="16" column="0">
+    <property name="text">
+     <string>1.7</string>
+    </property>
+   </item>
+   <item row="16" column="1">
+    <property name="text">
+     <string>18234</string>
+    </property>
+   </item>
+   <item row="17" column="0">
+    <property name="text">
+     <string>1.8</string>
+    </property>
+   </item>
+   <item row="17" column="1">
+    <property name="text">
+     <string>19876</string>
+    </property>
+   </item>
+   <item row="18" column="0">
+    <property name="text">
+     <string>1.9</string>
+    </property>
+   </item>
+   <item row="18" column="1">
+    <property name="text">
+     <string>21345</string>
+    </property>
+   </item>
+   <item row="19" column="0">
+    <property name="text">
+     <string>2.0</string>
+    </property>
+   </item>
+   <item row="19" column="1">
+    <property name="text">
+     <string>22678</string>
+    </property>
+   </item>
+   <item row="20" column="0">
+    <property name="text">
+     <string>2.1</string>
+    </property>
+   </item>
+   <item row="20" column="1">
+    <property name="text">
+     <string>23812</string>
+    </property>
+   </item>
+   <item row="21" column="0">
+    <property name="text">
+     <string>2.2</string>
+    </property>
+   </item>
+   <item row="21" column="1">
+    <property name="text">
+     <string>24598</string>
+    </property>
+   </item>
+   <item row="22" column="0">
+    <property name="text">
+     <string>2.3</string>
+    </property>
+   </item>
+   <item row="22" column="1">
+    <property name="text">
+     <string>24892</string>
+    </property>
+   </item>
+   <item row="23" column="0">
+    <property name="text">
+     <string>2.4</string>
+    </property>
+   </item>
+   <item row="23" column="1">
+    <property name="text">
+     <string>25000</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QPushButton" name="deleteButton">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>450</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Удалить</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="addButton">
+   <property name="geometry">
+    <rect>
+     <x>190</x>
+     <y>450</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Добавить</string>
+   </property>
+  </widget>
+  <widget class="QDialogButtonBox" name="buttonBox">
+   <property name="geometry">
+    <rect>
+     <x>390</x>
+     <y>450</y>
+     <width>156</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="standardButtons">
+    <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

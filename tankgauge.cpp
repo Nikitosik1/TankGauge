@@ -87,7 +87,7 @@ double TankGauge::calc_netto_error(double brutto_err_val, double err_water_val, 
     return 1.1 * pow(square_root, 0.5);
 }
 
-double TankGauge::calc_interpolate_volume(std::vector<double>& h_val, std::vector<int>& v_val, double find_v_val){
+double TankGauge::calc_interpolate_volume(std::vector<double>& h_val, std::vector<double>& v_val, double find_v_val){
 
     auto it = std::find_if(h_val.begin(), h_val.end(),
                            [find_v_val](double value){return value >= find_v_val;});//поиск элемента

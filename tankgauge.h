@@ -5,7 +5,7 @@
 //Структура для входных данных
 struct TGInput {
     std::vector<double> height;
-    std::vector<int> volume;
+    std::vector<double> volume;
     double t_curr_val1;
     double t_curr_val2;
     double t_curr_val3;
@@ -108,7 +108,7 @@ private:
                             double err_cl_val, double water_val, double mech_val, double cl_val);
 
     //расчет интерполяции для нахождения объема по высоте
-    double calc_interpolate_volume(std::vector<double>&h_val, std::vector<int>&v_val, double find_v_val);
+    double calc_interpolate_volume(std::vector<double>&h_val, std::vector<double>&v_val, double find_v_val);
 };
 
 #endif // TANKGAUGE_H

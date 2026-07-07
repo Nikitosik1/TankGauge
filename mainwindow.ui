@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Расчеты</string>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QTextBrowser" name="textBrowser">
@@ -34,8 +34,8 @@ p, li { white-space: pre-wrap; }
    <widget class="QPushButton" name="Calculate">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>370</y>
+      <x>170</x>
+      <y>360</y>
       <width>141</width>
       <height>61</height>
      </rect>
@@ -177,7 +177,7 @@ p, li { white-space: pre-wrap; }
      </rect>
     </property>
     <property name="maximum">
-     <double>2.400000000000000</double>
+     <double>100.000000000000000</double>
     </property>
     <property name="singleStep">
      <double>0.050000000000000</double>
@@ -474,6 +474,20 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="text">
      <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt;&quot;&gt;%&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="caliborationButton">
+    <property name="geometry">
+     <rect>
+      <x>330</x>
+      <y>360</y>
+      <width>141</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Задать градуировочную
+ таблицу</string>
     </property>
    </widget>
   </widget>

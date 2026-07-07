@@ -10,6 +10,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    hight = {0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0,
+                    1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0,
+                    2.1, 2.2, 2.3, 2.4};
+
+    volume = {324, 892, 1678, 2634, 3712, 4889, 6123, 7412, 7856, 9425,
+                    11032, 12650, 14256, 15823, 17234, 17896, 18234, 19876,
+                    21345, 22678, 23812, 24598, 24892, 25000};
+
 }
 
 MainWindow::~MainWindow()
@@ -23,14 +31,8 @@ void MainWindow::on_Calculate_clicked()
     try {
         TGInput input;
 
-        // Градуировочная таблица
-        input.height = {0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0,
-                        1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2.0,
-                        2.1, 2.2, 2.3, 2.4};
-
-        input.volume = {324, 892, 1678, 2634, 3712, 4889, 6123, 7412, 7856, 9425,
-                        11032, 12650, 14256, 15823, 17234, 17896, 18234, 19876,
-                        21345, 22678, 23812, 24598, 24892, 25000};
+        input.height = hight;
+        input.volume = volume;
 
         // Читаем значения из полей
         input.t_curr_val1 = ui->T1doubleSpinBox->value();
@@ -73,6 +75,7 @@ void MainWindow::on_Calculate_clicked()
             "  Температура               = %4 °C\n"
             "  Давление                  =%5  Па\n"
             "  Высота                    =%6   М\n"
+            "  Объем                     =%7   м³\n"
             "===================================="
         )
         .arg(result.m_netto_val, 0, 'f', 4)
@@ -80,7 +83,8 @@ void MainWindow::on_Calculate_clicked()
         .arg(result.d_oil_val, 0, 'f', 4)
         .arg(result.t_val, 0, 'f', 2)
         .arg(input.press_calc_val, 0, 'f', 2)
-        .arg(input.level_calc_val, 0, 'f', 2);
+        .arg(input.level_calc_val, 0, 'f', 2)
+        .arg(result.v_val_interp, 0, 'f', 1);
 
         // Показываем диалоговое окно
         QMessageBox msgBox;
@@ -102,5 +106,14 @@ void MainWindow::on_Calculate_clicked()
     } catch (const std::exception& e) {
         QMessageBox::critical(this, "Ошибка",
                              QString("Произошла ошибка:\n%1").arg(e.what()));
+    }
+}
+
+void MainWindow::on_caliborationButton_clicked(){
+    CalibrationDialog dlg(this);
+    dlg.setData(hight, volume);
+    if(dlg.exec()==QDialog::Accepted){
+        hight = dlg.get_hight();
+        volume = dlg.get_volume();
     }
 }
